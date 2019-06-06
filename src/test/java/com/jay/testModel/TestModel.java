@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.jay.model.Player;
+
 public class TestModel {
 
 	Player player;
@@ -16,6 +18,7 @@ public class TestModel {
 
 	@Test
 	public void testPlayerHasFullName() {
+		final String unexpectedResult = "Wrong players full name";
 		String firstname = "Jaydeep";
 		String surname = "Hasmukhlal";
 		String fullname = firstname + " " + surname;
@@ -25,7 +28,7 @@ public class TestModel {
 
 		String retrievedFullName = player.getFirstname() + " " + player.setSurname();
 
-		assertEquals("Wrong players full name", fullname, retrievedFullName);
+		assertEquals(unexpectedResult, fullname, retrievedFullName);
 	}
 
 	@Test
@@ -102,6 +105,16 @@ public class TestModel {
 		int retrievedFullBalled = player.getPlayerGotFullBalled();
 
 		assertEquals(unexpectedResult, expectedFullBalled, retrievedFullBalled);
+	}
+	
+	@Test
+	public void testPlayerUsername() {
+		final String unexpectedResult = "Error: Unexpected username.";
+		String expectedUsername = "jaydeeph";
+		player.setUsername(expectedUsername);
+		String retrievedUsername = player.getUsername();
+		
+		assertEquals(unexpectedResult, expectedUsername, retrievedUsername);
 	}
 
 }
