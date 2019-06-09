@@ -24,9 +24,9 @@ public class TestModel {
 		String fullname = firstname + " " + surname;
 
 		player.setFirstname(firstname);
-		player.setSurname(surname);
+		player.setLastname(surname);
 
-		String retrievedFullName = player.getFirstname() + " " + player.setSurname();
+		String retrievedFullName = player.getFirstname() + " " + player.getLastname();
 
 		assertEquals(unexpectedResult, fullname, retrievedFullName);
 	}
@@ -42,7 +42,7 @@ public class TestModel {
 		player.addLoss();
 		player.addWin();
 
-		int retrievedHighestWinStreak = player.getHighestWinStreak();
+		int retrievedHighestWinStreak = player.getWinStreaks();
 
 		assertEquals(unexpectedResult, expectedHighestStreak, retrievedHighestWinStreak);
 	}
@@ -57,7 +57,7 @@ public class TestModel {
 		player.addWin();
 		player.addLoss();
 
-		int retrievedHighestLossStreak = player.getHighestLossStreak();
+		int retrievedHighestLossStreak = player.getLossStreaks();
 
 		assertEquals(unexpectedResult, expectedHighestLossStreak, retrievedHighestLossStreak);
 	}
@@ -82,12 +82,12 @@ public class TestModel {
 		final String unexpectedResult = "Error: Unexpected number of full balled";
 		int expectedFullBalled = 3;
 
-		player.addPlayerFullBalledEnemy();
-		player.addPlayerFullBalledEnemy();
+		player.addFullBalledEnemy();
+		player.addFullBalledEnemy();
 		player.addWin();
-		player.addPlayerFullBalledEnemy();
+		player.addFullBalledEnemy();
 
-		int retrievedFullBalled = player.getPlayerFullBalledEnemy();
+		int retrievedFullBalled = player.getFullBalledEnemy();
 
 		assertEquals(unexpectedResult, expectedFullBalled, retrievedFullBalled);
 	}
@@ -97,12 +97,12 @@ public class TestModel {
 		final String unexpectedResult = "Error: Unexpected number of full balled";
 		int expectedFullBalled = 2;
 
-		player.addPlayerGotFullBalled();
-		player.addPlayerFullBalledEnemy();
+		player.addGotFullBalled();
+		player.addFullBalledEnemy();
 		player.addWin();
-		player.addPlayerGotFullBalled();
+		player.addGotFullBalled();
 
-		int retrievedFullBalled = player.getPlayerGotFullBalled();
+		int retrievedFullBalled = player.getGotFullBalled();
 
 		assertEquals(unexpectedResult, expectedFullBalled, retrievedFullBalled);
 	}
