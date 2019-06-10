@@ -87,20 +87,21 @@ public class Player {
 
 	public void addWin() {
 		this.wins++;
-		if (++this.winStreakCounter != 0) {
+		this.winStreakCounter++;
+		if (this.winStreakCounter > this.winStreaks) {
 			this.winStreaks++;
-			this.lossStreaks = 0;
 			this.lossStreakCounter = 0;
 		}
 	}
 
 	public void addLoss() {
 		this.loses++;
-		if (++this.lossStreakCounter != 0) {
+		this.lossStreakCounter++;
+		if (this.lossStreakCounter > this.lossStreaks) {
 			this.lossStreaks++;
-			this.winStreaks = 0;
 			this.winStreakCounter = 0;
 		}
+		
 	}
 
 	public void addDraw() { 
