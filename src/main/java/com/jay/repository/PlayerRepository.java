@@ -1,11 +1,11 @@
-package com.qa.repository;
+package com.jay.repository;
 
 import java.util.List;
 
 import com.jay.model.Player;
 
 public interface PlayerRepository {
-	public Player createPlayer(Player player);
+	public Player addPlayer(Player player);
 	public Player updatePlayer(String username, Player player);
 	public Player getPlayer(String username);
 	public List<Player> getAllPlayers();
