@@ -58,7 +58,6 @@ public class TestModel {
 		player.addLoss();
 
 		int retrievedHighestLossStreak = player.getLossStreaks();
-		System.out.println("retrievedHighestLossStreak" + retrievedHighestLossStreak);
 
 		assertEquals(unexpectedResult, expectedHighestLossStreak, retrievedHighestLossStreak);
 	}
