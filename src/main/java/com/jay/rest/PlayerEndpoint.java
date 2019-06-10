@@ -38,18 +38,29 @@ public class PlayerEndpoint {
 	}
 	
 	@GET
-	@Path("/player/{username}")
+	@Path("/player/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getPlayer(@PathParam("username") String username) {
-		if (playerRepository.getPlayer(username).equals(null)) {
+	public Response getPlayerById(@PathParam("id") int id) {
+		if (playerRepository.getPlayerByID(id).equals(null)) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
-		Player player = playerRepository.getPlayer(username);
+		Player player = playerRepository.getPlayerByID(id);
 		return Response.ok(player).build();
 	}
 	
 	@GET
-	@Path("/accounts")
+	@Path("/player/{username}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getPlayerByName(@PathParam("username") String username) {
+		if (playerRepository.getPlayerByName(username).equals(null)) {
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		Player player = playerRepository.getPlayerByName(username);
+		return Response.ok(player).build();
+	}
+	
+	@GET
+	@Path("/player")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAllPlayers() {
 		List<Player> listOfPlayers = playerRepository.getAllPlayers();
@@ -59,29 +70,26 @@ public class PlayerEndpoint {
 		return Response.ok(listOfPlayers).build();
 	}
 	
-	
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({"application/json"})
-	@Path("/player/{username}")
-	public Response updatePlayer(Player player, @PathParam("username") String username) {
-		if (playerRepository.getPlayer(username).equals(null)) {
+	@Path("/player/{id}")
+	public Response updatePlayer(Player player, @PathParam("id") int id) {
+		if (playerRepository.getPlayerByID(id).equals(null)) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
-		Player retrievedPlayer = playerRepository.updatePlayer(username, player);
+		Player retrievedPlayer = playerRepository.updatePlayer(id, player);
 		return Response.ok(retrievedPlayer).build();
 	}
 	
 	@DELETE
-	@Path("/player/{username}")
-	public Response deletePlayer(@PathParam("username") String username) {
-		if (playerRepository.getPlayer(username).equals(null)) {
+	@Path("/player/{id}")
+	public Response deletePlayer(@PathParam("id") int id) {
+		if (playerRepository.getPlayerByID(id).equals(null)) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
-		playerRepository.deletePlayer(username);
+		playerRepository.deletePlayer(id);
 		return Response.noContent().build();
-	}
-	
-	
+	}	
 }
 

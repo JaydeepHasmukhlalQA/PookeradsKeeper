@@ -23,25 +23,33 @@ public class PlayerRepositoryDatabase implements PlayerRepository {
 		return player;
 	}
 
-	public Player updatePlayer(String username, Player updatedPlayer) {
-		Player player = getPlayer(username);
+	@Transactional(value = TxType.REQUIRED)
+	public Player updatePlayer(int id, Player updatedPlayer) {
+		Player player = this.getPlayerByID(id);
 		player = updatedPlayer;
 		return player;
 	}
-
-	public Player getPlayer(String username) {
-		Player player = entityManager.find(Player.class, username);
+	
+	public Player getPlayerByID(int id) {
+		Player player = entityManager.find(Player.class, id);
 		return player;
 	}
 
+	public Player getPlayerByName(String username) {
+		TypedQuery<Player> queryPlayerByUsername = entityManager.createQuery("Select player from Player player Where player.username = :username", Player.class);
+		queryPlayerByUsername.setParameter("username", username);
+		return queryPlayerByUsername.getSingleResult();
+	}
+
 	public List<Player> getAllPlayers() {
-		TypedQuery<Player> queryPlayer = entityManager.createQuery("Select player from Player player;", Player.class);
+		TypedQuery<Player> queryPlayer = entityManager.createQuery("Select player from Player player", Player.class);
 		List<Player> listOfPlayers = queryPlayer.getResultList();
 		return listOfPlayers;
 	}
 
-	public void deletePlayer(String username) {
-		entityManager.remove(username);
+	@Transactional(value = TxType.REQUIRED)
+	public void deletePlayer(int id) {
+		entityManager.remove(getPlayerByID(id));
 	}
 	
 }

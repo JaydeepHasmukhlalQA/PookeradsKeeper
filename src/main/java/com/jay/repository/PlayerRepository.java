@@ -6,9 +6,10 @@ import com.jay.model.Player;
 
 public interface PlayerRepository {
 	public Player addPlayer(Player player);
-	public Player updatePlayer(String username, Player player);
-	public Player getPlayer(String username);
+	public Player updatePlayer(int id, Player player);
+	public Player getPlayerByID(int id);
+	public Player getPlayerByName(String username);
 	public List<Player> getAllPlayers();
-	public void deletePlayer(String username);
+	public void deletePlayer(int id);
 	
 }

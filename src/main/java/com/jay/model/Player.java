@@ -1,5 +1,6 @@
 package com.jay.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,6 +11,7 @@ public class Player {
 	@Id
 	@GeneratedValue
 	private int id;
+	@Column(unique = true)
 	private String username;
 	private String firstname;
 	private String lastname;
@@ -25,6 +27,10 @@ public class Player {
 
 	public Player() {
 
+	}
+	
+	public int getId() {
+		return this.id;
 	}
 	
 	public String getUsername() {
