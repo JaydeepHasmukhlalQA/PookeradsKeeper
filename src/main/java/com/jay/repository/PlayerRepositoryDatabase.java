@@ -1,4 +1,4 @@
-package com.qa.repository;
+package com.jay.repository;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class PlayerRepositoryDatabase implements PlayerRepository {
 	@PersistenceContext(unitName = "myPU")
 	private EntityManager entityManager;
 	
-	public Player createPlayer(Player player) {
+	public Player addPlayer(Player player) {
 		entityManager.persist(player);
 		return player;
 	}
