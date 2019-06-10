@@ -17,6 +17,7 @@ public class PlayerRepositoryDatabase implements PlayerRepository {
 	@PersistenceContext(unitName = "myPU")
 	private EntityManager entityManager;
 	
+	@Transactional(value = TxType.REQUIRED)
 	public Player addPlayer(Player player) {
 		entityManager.persist(player);
 		return player;
