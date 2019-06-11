@@ -26,9 +26,20 @@ public class PlayerRepositoryDatabase implements PlayerRepository {
 	@Transactional(value = TxType.REQUIRED)
 	public Player updatePlayer(int id, Player updatedPlayer) {
 		Player player = this.getPlayerByID(id);
-		player = updatedPlayer;
+		player.setFirstname(updatedPlayer.getFirstname());
+		player.setLastname(updatedPlayer.getLastname());
+		player.setWins(updatedPlayer.getWins());
+		player.setWinStreaks(updatedPlayer.getWinStreaks());
+		player.setWinStreakCounter(updatedPlayer.getWinStreakCounter());
+		player.setLoses(updatedPlayer.getLoses());
+		player.setLossStreaks(updatedPlayer.getLossStreaks());
+		player.setLossStreakCounter(updatedPlayer.getLossStreakCounter());
+		player.setDraws(updatedPlayer.getDraws());
+		player.setFullBalledEnemy(updatedPlayer.getFullBalledEnemy());
+		player.setGotFullBalled(updatedPlayer.getGotFullBalled());
 		return player;
 	}
+	
 	
 	public Player getPlayerByID(int id) {
 		Player player = entityManager.find(Player.class, id);

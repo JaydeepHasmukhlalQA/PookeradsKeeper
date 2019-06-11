@@ -41,10 +41,10 @@ public class PlayerEndpoint {
 	@Path("/player/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getPlayerById(@PathParam("id") int id) {
-		if (playerRepository.getPlayerByID(id).equals(null)) {
+		Player player = playerRepository.getPlayerByID(id);
+		if (player.equals(null)) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
-		Player player = playerRepository.getPlayerByID(id);
 		return Response.ok(player).build();
 	}
 	
