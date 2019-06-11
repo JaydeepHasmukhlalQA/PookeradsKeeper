@@ -25,7 +25,6 @@ public class TestModel {
 
 		player.setFirstname(firstname);
 		player.setLastname(surname);
-
 		String retrievedFullName = player.getFirstname() + " " + player.getLastname();
 
 		assertEquals(unexpectedResult, fullname, retrievedFullName);
@@ -36,12 +35,7 @@ public class TestModel {
 		final String unexpectedResult = "Error: Unexpected highest win streak.";
 		int expectedHighestStreak = 3;
 
-		player.addWin();
-		player.addWin();
-		player.addWin();
-		player.addLoss();
-		player.addWin();
-
+		player.setWinStreaks(expectedHighestStreak);
 		int retrievedHighestWinStreak = player.getWinStreaks();
 
 		assertEquals(unexpectedResult, expectedHighestStreak, retrievedHighestWinStreak);
@@ -52,13 +46,9 @@ public class TestModel {
 		final String unexpectedResult = "Error: Unexpected highest loss streak.";
 		int expectedHighestLossStreak = 2;
 
-		player.addLoss();
-		player.addLoss();
-		player.addWin();
-		player.addLoss();
-
+		player.setLossStreaks(expectedHighestLossStreak);
 		int retrievedHighestLossStreak = player.getLossStreaks();
-
+		
 		assertEquals(unexpectedResult, expectedHighestLossStreak, retrievedHighestLossStreak);
 	}
 
@@ -67,13 +57,9 @@ public class TestModel {
 		final String unexpectedResult = "Error: Unexpected number of draws.";
 		int expectedDraw = 4;
 
-		player.addDraw();
-		player.addDraw();
-		player.addDraw();
-		player.addDraw();
+		player.setDraws(expectedDraw);
 
 		int retrievedDraw = player.getDraws();
-
 		assertEquals(unexpectedResult, expectedDraw, retrievedDraw);
 	}
 
@@ -82,11 +68,7 @@ public class TestModel {
 		final String unexpectedResult = "Error: Unexpected number of full balled";
 		int expectedFullBalled = 3;
 
-		player.addFullBalledEnemy();
-		player.addFullBalledEnemy();
-		player.addWin();
-		player.addFullBalledEnemy();
-
+		player.setFullBalledEnemy(expectedFullBalled);
 		int retrievedFullBalled = player.getFullBalledEnemy();
 
 		assertEquals(unexpectedResult, expectedFullBalled, retrievedFullBalled);
@@ -97,11 +79,7 @@ public class TestModel {
 		final String unexpectedResult = "Error: Unexpected number of full balled";
 		int expectedFullBalled = 2;
 
-		player.addGotFullBalled();
-		player.addFullBalledEnemy();
-		player.addWin();
-		player.addGotFullBalled();
-
+		player.setGotFullBalled(expectedFullBalled);
 		int retrievedFullBalled = player.getGotFullBalled();
 
 		assertEquals(unexpectedResult, expectedFullBalled, retrievedFullBalled);

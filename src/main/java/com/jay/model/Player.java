@@ -26,17 +26,13 @@ public class Player {
 	private int fullBalledEnemy;
 
 	public Player() {
+		
+	}
 
-	}
-	
-	public int getId() {
-		return this.id;
-	}
-	
 	public String getUsername() {
-		return this.username;
+		return username;
 	}
-	
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -50,7 +46,7 @@ public class Player {
 	}
 
 	public String getLastname() {
-		return this.lastname;
+		return lastname;
 	}
 
 	public void setLastname(String lastname) {
@@ -61,12 +57,32 @@ public class Player {
 		return draws;
 	}
 
+	public void setDraws(int draws) {
+		this.draws = draws;
+	}
+
 	public int getWins() {
 		return wins;
 	}
 
+	public void setWins(int wins) {
+		this.wins = wins;
+	}
+
 	public int getWinStreaks() {
 		return winStreaks;
+	}
+
+	public void setWinStreaks(int winStreaks) {
+		this.winStreaks = winStreaks;
+	}
+
+	public int getWinStreakCounter() {
+		return winStreakCounter;
+	}
+
+	public void setWinStreakCounter(int winStreakCounter) {
+		this.winStreakCounter = winStreakCounter;
 	}
 
 	public int getLoses() {
@@ -80,44 +96,39 @@ public class Player {
 	public int getLossStreaks() {
 		return lossStreaks;
 	}
-	
-	public int getFullBalledEnemy() {
-		return fullBalledEnemy;
+
+	public void setLossStreaks(int lossStreaks) {
+		this.lossStreaks = lossStreaks;
+	}
+
+	public int getLossStreakCounter() {
+		return lossStreakCounter;
+	}
+
+	public void setLossStreakCounter(int lossStreakCounter) {
+		this.lossStreakCounter = lossStreakCounter;
 	}
 
 	public int getGotFullBalled() {
 		return gotFullBalled;
 	}
 
-	public void addWin() {
-		this.wins++;
-		this.winStreakCounter++;
-		if (this.winStreakCounter > this.winStreaks) {
-			this.winStreaks++;
-			this.lossStreakCounter = 0;
-		}
+	public void setGotFullBalled(int gotFullBalled) {
+		this.gotFullBalled = gotFullBalled;
 	}
 
-	public void addLoss() {
-		this.loses++;
-		this.lossStreakCounter++;
-		if (this.lossStreakCounter > this.lossStreaks) {
-			this.lossStreaks++;
-			this.winStreakCounter = 0;
-		}
-		
+	public int getFullBalledEnemy() {
+		return fullBalledEnemy;
 	}
 
-	public void addDraw() { 
-		this.draws++;
+	public void setFullBalledEnemy(int fullBalledEnemy) {
+		this.fullBalledEnemy = fullBalledEnemy;
+	}
+
+	public int getId() {
+		return id;
 	}
 	
-	public void addFullBalledEnemy() {
-		this.fullBalledEnemy++;
-	}
-
-	public void addGotFullBalled() {
-		this.gotFullBalled++;
-	}
+	
 
 }
