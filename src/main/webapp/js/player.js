@@ -1,54 +1,54 @@
 class Player {
-    _id;
-    _username;
-    _firstname;
-    _lastname;
-    _wins = 0;
-    _winStreaks = 0;
-    _winStreakCounter = 0;
-    _loses = 0;
-    _lossStreaks = 0;
-    _lossStreakCounter = 0;
-    _draws = 0;
-    _fullBalledEnemy = 0;
-    _gotFullBalled = 0;
+    id;
+    username;
+    firstname;
+    lastname;
+    wins = 0;
+    winStreaks = 0;
+    winStreakCounter = 0;
+    loses = 0;
+    lossStreaks = 0;
+    lossStreakCounter = 0;
+    draws = 0;
+    fullBalledEnemy = 0;
+    gotFullBalled = 0;
 
     constructor(username, firstname, lastname) {
-        this._username = username;
-        this._firstname = firstname;
-        this._lastname = lastname;
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
 
     get getId() {
-        return this._id;
+        return this.id;
     }
 
     get getUsername() {
-        return this._username;
+        return this.username;
     }
 
     set setFirstname(value) {
-        this._firstname = value;
+        this.firstname = value;
     }
 
     get getFirstname() {
-        return this._firstname;
+        return this.firstname;
     }
 
     set setLastname(value) {
-        this._lastname = value;
+        this.lastname = value;
     }
 
     get getLastname() {
-        return this._lastname;
+        return this.lastname;
     }
 
-    set addWins() {
-        this._wins++;
-        this._winStreakCounter++;
-        if (this._winStreakCounter > this._winStreaks) {
-            this._winStreaks++;
-            this._lossStreakCounter = 0;
+    addWins() {
+        this.wins++;
+        this.winStreakCounter++;
+        if (this.winStreakCounter > this.winStreaks) {
+            this.winStreaks++;
+            this.lossStreakCounter = 0;
         }
     }
 
@@ -56,48 +56,48 @@ class Player {
         return this._wins;
     }
 
-    set setLoses() {
-        this._loses++;
-        this._lossStreakCounter++;
-        if (this._lossStreakCounter > this._lossStreaks) {
-            this._lossStreaks++;
-            this._winStreakCounter = 0;
+    addLoss() {
+        this.loses++;
+        this.lossStreakCounter++;
+        if (this.lossStreakCounter > this.lossStreaks) {
+            this.lossStreaks++;
+            this.winStreakCounter = 0;
         }
     }
 
-    get getLoses() {
-        return this._loses;
+    get getLoss() {
+        return this.loses;
     }
 
     set setDraws(value) {
-        this._draws = value;
+        this.draws = value;
     }
 
     get getDraws() {
-        return this._draws;
+        return this.draws;
     }
 
     get getWinStreaks() {
-        return this._winStreaks;
+        return this.winStreaks;
     }
 
     get getLossesStreak() {
-        return this._lossStreaks;
+        return this.lossStreaks;
     }
 
     set setFullBalledEnemy(value) {
-        this._fullBalledEnemy = value;
+        this.fullBalledEnemy = value;
     }
 
     get getFullBalledEnemy() {
-        return this._fullBalledEnemy;
+        return this.fullBalledEnemy;
     }
 
     set setGotFullBalled(value) {
-        this._gotFullBalled = value;
+        this.gotFullBalled = value;
     }
 
     get getGotFullBalled() {
-        return this._gotFullBalled;
+        return this.gotFullBalled;
     }
 }

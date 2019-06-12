@@ -49,7 +49,7 @@ public class PlayerEndpoint {
 	}
 	
 	@GET
-	@Path("/player/{username}")
+	@Path("/player/user/{username}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getPlayerByName(@PathParam("username") String username) {
 		if (playerRepository.getPlayerByName(username).equals(null)) {
