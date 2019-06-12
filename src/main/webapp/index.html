@@ -13,60 +13,79 @@
 
 <body>
 
-    <div>
-        <nav class="navbar navbar-expand-lg sticky-top">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <button class="btn btn-outline-success" type="button">Main button</button>
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <div class="container">
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Pookerards</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link disabled" href="index.html">Login<span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Players</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </div>
 
+
     <div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <form>
+        <div class="row justify-content-md-center">
+            <div class="ccol-md-auto text-center">
+                <h1 class="display-4">Pookerards Login</h1>
+                <form onsubmit="return false" id="loginForm" class="form-inlin justify-content-center">
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" name="username"
-                            placeholder="Enter your username">
+                        <label for="username" class="sr-only">Username</label>
+                        <input type="text" class="form-control" name="username" placeholder="Your username here">
                     </div>
-                    <button class="btn btn-primary">Submit</button>
+                    <button onclick="" class="btn btn-success ">Log me In</button>
+                    <button onclick="registerMeButtonClick();" class="btn btn-success ">Register Me</button>
                 </form>
             </div>
         </div>
+    </div>
+
+
+    <!-- <div class="container">
+        <div class="row">
+            <div class="mx-auto">
+                <form>
+                    <div class="form-group row form-inline">
+                        <label for="username" class="col-sm-2 col-form-label">Username</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="username" placeholder="Add your username">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div> -->
 
 
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
-
+    <script src="js/player.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
