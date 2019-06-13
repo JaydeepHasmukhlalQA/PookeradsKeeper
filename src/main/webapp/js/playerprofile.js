@@ -9,15 +9,14 @@ let lossStreakInput;
 let drawsInput;
 let fullBalledEnemyInput;
 let gotFullBalledInput;
+let player;
 
 function getJsonPlayerFromSession() {
     getAllInput();
+    let jsonPlayer = sessionStorage.getItem("playerJson");
+    player = JSON.parse(jsonPlayer);
 
-    let fakeJson = '{"draws":0,"firstname":"Jaydeep","fullBalledEnemy":0,"gotFullBalled":0,"id":3,"lastname":"Hasmukhlal","loses":0,"lossStreakCounter":0,"lossStreaks":0,"username":"jaydeeph","winStreakCounter":0,"winStreaks":0,"wins":0}';
-    //let player = JSON.parse(sessionStorage.getItem("playerJson"));
-    let player = JSON.parse(fakeJson);
-    console.log(player);
-    let {firstname, lastname} = player;
+    let { firstname, lastname } = player;
 
     fullnameHeader.innerHTML = firstname + " " + lastname;
     usernameInput.value = player.username;
@@ -46,6 +45,86 @@ function getAllInput() {
     gotFullBalledInput = document.getElementById("playerProfileForm").elements["gotFullBalled"];
 }
 
-function updateMeButtonPressed() {
+function updateDetailsButtonPressed() {
+    let updateDetailsButton = document.getElementById("updateDetailsButton");
 
+    if (updateDetailsButton.textContent === "Edit Details") {
+
+        updateDetailsButton.textContent = "Update Details";
+        firstnameInput.readOnly = false;
+        lastnameInput.readOnly = false;
+
+    } else if (updateDetailsButton.textContent === "Update Details") {
+
+        updateDetailsButton.textContent = "Edit Details";
+        firstnameInput.readOnly = true;
+        lastnameInput.readOnly = true;
+
+        updatePlayer();
+
+        let id = player.id;
+        let jsonPlayer = JSON.stringify(player);
+
+        updatePlayerToAPI(id, jsonPlayer).then((value) => {
+            console.log(value)
+        }).catch((value) => {
+            console.log(value)
+        });
+    }
+}
+
+function deleteMeButtonPressed() {
+    let id = player.id;
+
+    deletePlayerFromAPI(id).then((value) => {
+        console.log(value);
+    }).catch((value) => {
+        console.log(value);
+    });
+}
+
+function updatePlayer() {
+    player.firstname = firstnameInput.value;
+    player.lastname = lastnameInput.value;
+}
+
+function updatePlayerToAPI(id, jsonPlayer) {
+    return new Promise(function (resolve, reject) {
+        let putUrl = "http://127.0.0.1:8080/PookeradsKeeper-1.0/api/player/" + id;
+        const XHR = new XMLHttpRequest();
+
+        XHR.onreadystatechange = function() {
+            if (XHR.readyState === 4) {
+                if (XHR.status === 200) {
+                    resolve("Successfully updated account.");
+                } else {
+                    reject("Error: Could not update account. Try again.");
+                }
+            }
+        }
+
+        XHR.open('PUT', putUrl, true);
+        XHR.setRequestHeader('Content-Type', 'application/json');
+        XHR.send(jsonPlayer);
+    });
+}
+
+function deletePlayerFromAPI(id) {
+    return new Promise(function (resolve, reject) {
+        let deleteUrl = "http://127.0.0.1:8080/PookeradsKeeper-1.0/api/player/" + id;
+        const XHR = new XMLHttpRequest();
+
+        XHR.onreadystatechange = function() {
+            if (XHR.readyState === 4) {
+                if (XHR.status === 204) {
+                    resolve("Successfully deleted your account.");
+                } else {
+                    reject("Error: Could not delete account. Please try again.");
+                }
+            }
+        }
+
+        XHR.open('DELETE', deleteUrl, true);
+        XHR.send();
+    });
 }
