@@ -1,3 +1,10 @@
+const alertType = {
+    SUCCESS: "alert-success",
+    FAIL: "alert-danger"
+}
+
+let intervalCounter = 4;
+
 function loadRegisterUsername() {
     let username = sessionStorage.getItem("registerUsername");
     if (username === "none") return;
@@ -10,6 +17,8 @@ function registerMeButtonClick() {
     let usernameInput = document.getElementById("registerForm").elements["username"];
     let firstnameInput = document.getElementById("registerForm").elements["firstname"];
     let lastnameInput = document.getElementById("registerForm").elements["lastname"];
+    let alertMessage = document.getElementById("alertMessage");
+    let infoMessage = document.getElementById("infoMessage");
 
     checkFormValidation(usernameInput, firstnameInput, lastnameInput);
 
@@ -17,9 +26,11 @@ function registerMeButtonClick() {
     let jsonObject = JSON.stringify(player);
 
     postPlayerToAPI(jsonObject).then((value) => {
-        console.log(value);
+        showAlert(alertMessage, value, alertType.SUCCESS);
+        setTimeout(() => {returnToLoginPage();}, 5000)
+        setInterval(() => {informUserRedirect(infoMessage);}, 1000)
     }).catch((value) => {
-        console.log(value);
+        showAlert(alertMessage, value, alertType.FAIL);
     });
 }
 
@@ -46,6 +57,33 @@ function checkFormValidation(usernameInput, firstnameInput, lastnameInput) {
     }
 }
 
+function showAlert(alertBox, message, alertType) {
+    alertBox.innerHTML = message;
+
+    alertBox.classList.remove("alert-success");
+    alertBox.classList.remove("alert-danger");
+
+    alertBox.classList.toggle("fade");
+    alertBox.classList.add("show", alertType);
+}
+
+function hideAlert(alertBox) {
+    alertBox.classList.remove("show");
+    alertBox.classList.add("show");
+}
+
+function informUserRedirect(infoMessage) {
+    if (intervalCounter != 0) {
+        showAlert(infoMessage, "Taking you to login page in " + intervalCounter + "  seconds", "alert-info");
+        intervalCounter--;
+    }
+}
+
+function returnToLoginPage() {
+    console.log("worked mate");
+    window.location.assign("index.html");
+}
+
 function postPlayerToAPI(jsonObject) {
     return new Promise(function (resolve, reject) {
         let postUrl = "http://127.0.0.1:8080/PookeradsKeeper-1.0/api/player/";
@@ -67,7 +105,6 @@ function postPlayerToAPI(jsonObject) {
 
     });
 }
-
 
 function isStringEmpty(string) {
     if (string == "") {

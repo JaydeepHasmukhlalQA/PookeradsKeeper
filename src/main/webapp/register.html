@@ -40,27 +40,37 @@
 
     <div class="container">
         <div class="row justify-content-md-center">
-            <div class="ccol-md-auto text-center">
+            <div class="col-md-auto text-center">
                 <h1 class="display-4">Pookerards Register</h1>
                 <form onsubmit="return false" id="registerForm" class="form-inlin justify-content-center">
                     <div class="form-group">
                         <label for="username" class="sr-only">Username</label>
-                        <input type="text" class="form-control" name="username" placeholder="Your username here" required>
+                        <input type="text" class="form-control" name="username" placeholder="Your username here"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="firstname" class="sr-only">Firstname</label>
-                        <input type="text" class="form-control" name="firstname" placeholder="Your firstname here" required>
+                        <input type="text" class="form-control" name="firstname" placeholder="Your firstname here"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="lastname" class="sr-only">Lastname</label>
-                        <input type="text" class="form-control" name="lastname" placeholder="Your lastname here" required>
+                        <input type="text" class="form-control" name="lastname" placeholder="Your lastname here"
+                            required>
+                    </div>
+                    <div class="col-md-auto">
+                        <div id="alertMessage" class="alert alert-success fade" role="alert">
+                        </div>
+                    </div>
+                    <div class="col-md-auto">
+                        <div id="infoMessage" class="alert alert-info fade" role="alert">
+                        </div>
                     </div>
                     <button onclick="registerMeButtonClick();" class="btn btn-success ">Register Me</button>
                 </form>
             </div>
         </div>
     </div>
-
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -73,8 +83,8 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/register.js"></script>
+    <script type="text/javascript" src="js/player.js"></script>
 
 </body>
 
