@@ -95,6 +95,7 @@ function deleteMeButtonPressed() {
 
     deletePlayerFromAPI(id).then((value) => {
         showAlert(value, alertType.SUCCESS);
+        setTimeout(() => {returnToLoginPage();}, 3000)
     }).catch((value) => {
         showAlert(value, alertType.FAIL);
     });
@@ -113,6 +114,10 @@ function showAlert(message, alertType) {
 function hideAlert() {
     alertMessage.classList.remove("show");
     alertMessage.classList.add("show");
+}
+
+function returnToLoginPage() {
+    window.location.assign("index.html");
 }
 
 function updatePlayerObject() {
