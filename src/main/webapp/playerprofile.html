@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/playerprofile.css">
 </head>
 
 <body onload="getJsonPlayerFromSession();">
@@ -38,58 +39,124 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-md-auto text-center">
-                <h1 id="playerFullnameTag" class="display-4"></h1>
-                <form onsubmit="return false" id="playerProfileForm" class="form-inlin justify-content-center">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control" name="username" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="firstname">Firstname</label>
-                        <input type="text" class="form-control" name="firstname" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastname">Lastname</label>
-                        <input type="text" class="form-control" name="lastname" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="wins">Wins</label>
-                        <input type="text" class="form-control" name="wins" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="winStreaks">Win Streaks</label>
-                        <input type="text" class="form-control" name="winStreaks" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="draws">Draws</label>
-                        <input type="text" class="form-control" name="draws" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="losses">Losses</label>
-                        <input type="text" class="form-control" name="losses" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="lossStreak">Loss Streak</label>
-                        <input type="text" class="form-control" name="lossStreaks" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="fullBalledEnemy">Full Balled Enemy</label>
-                        <input type="text" class="form-control" name="fullBalledEnemy" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="gotFullBalled">Got Full Balled</label>
-                        <input type="text" class="form-control" name="gotFullBalled" readonly>
-                    </div>
-
-
-                    <button id="updateDetailsButton" onclick="updateDetailsButtonPressed();" class="btn btn-success ">Edit Details</button>
-                    <button id="deleteMeButton" onclick="deleteMeButtonPressed();" class="btn btn-success ">Delete Me</button>
-                </form>
+    <div id="playerProfileContainer" class="container">
+        <div class="row justify-content-md-center align-items-center">
+            <div class="col-md-auto align-self-center">
+                <span><img src="img/default_profile.jpg" class="rounded-circle border border-danger"></span>
             </div>
         </div>
+        <div class="row justify-content-md-center align-items-center">
+            <h1 id="playerFullnameTag" class="display-3"></h1>
+        </div>
+
+        <div class="row justify-content-md-center align-items-center">
+            <div class="col-md-auto">
+                <label class="display-4 profile-label">Username:</label>
+            </div>
+            <div class="col-md-auto">
+                <label id="usernameLabel" class="display-4 profile-data"></label>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center align-items-center">
+            <div class="col-md-auto">
+                <label class="display-4 profile-label">Firstname:</label>
+            </div>
+            <div class="col-md-auto">
+                <input id="firstnameInput" type="text" class="form-control" readonly>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center align-items-center">
+            <div class="col-md-auto">
+                <label class="display-4 profile-label">Lastname:</label>
+            </div>
+            <div class="col-md-auto">
+                <input id="lastnameInput" type="text" class="form-control" readonly>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center align-items-center">
+            <div class="col-md-auto">
+                <label class="display-4 profile-label">Wins:</label>
+            </div>
+            <div class="col-md-auto">
+                <label id="winsLabel" class="display-4 profile-data"></label>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center align-items-center">
+            <div class="col-md-auto">
+                <label class="display-4 profile-label">Win Streak:</label>
+            </div>
+            <div class="col-md-auto">
+                <label id="winStreaksLabel" class="display-4 profile-data"></label>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center align-items-center">
+            <div class="col-md-auto">
+                <label class="display-4 profile-label">Draws:</label>
+            </div>
+            <div class="col-md-auto">
+                <label id="drawsLabel" class="display-4 profile-data"></label>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center align-items-center">
+            <div class="col-md-auto">
+                <label class="display-4 profile-label">Losses:</label>
+            </div>
+            <div class="col-md-auto">
+                <label id="lossesLabel" class="display-4 profile-data"></label>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center align-items-center">
+            <div class="col-md-auto">
+                <label class="display-4 profile-label">Loss Streak:</label>
+            </div>
+            <div class="col-md-auto">
+                <label id="lossStreakLabel" class="display-4 profile-data"></label>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center align-items-center">
+            <div class="col-md-auto">
+                <label class="display-4 profile-label">Full Balled Enemy:</label>
+            </div>
+            <div class="col-md-auto">
+                <label id="fullBalledEnemyLabel" class="display-4 profile-data"></label>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center align-items-center">
+            <div class="col-md-auto">
+                <label class="display-4 profile-label">Got Full Balled:</label>
+            </div>
+            <div class="col-md-auto">
+                <label id="gotFullBalledLabel" class="display-4 profile-data"></label>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center align-items-center">
+            <div class="col-md-auto">
+                <div id="alertMessage" class="alert alert-success fade" role="alert">
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center align-items-center">
+            <div class="col-md-auto">
+                <button id="updateDetailsButton" type="button" class="btn btn-primary"
+                    onclick="updateDetailsButtonPressed();">Edit Details</button>
+            </div>
+            <div class="col-md-auto">
+                <button id="deleteMeButton" type="button" class="btn btn-danger" onclick="deleteMeButtonPressed();">Delete
+                    Details</button>
+            </div>
+        </div>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
