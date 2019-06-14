@@ -1,19 +1,34 @@
 package com.jay.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
+@Table(name = "Player")
 public class Player {
 	@Id
 	@GeneratedValue
+	@Column(name = "player_id")
 	private int id;
+	@NotNull
 	@Column(unique = true)
 	private String username;
+	@NotNull
 	private String firstname;
+	@NotNull
 	private String lastname;
 	private int draws;
 	private int wins;
@@ -24,6 +39,15 @@ public class Player {
 	private int lossStreakCounter;
 	private int gotFullBalled;
 	private int fullBalledEnemy;
+	
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinTable
+			(
+			name = "player_match",
+			joinColumns = @JoinColumn(name = "player_id", referencedColumnName = "player_id"),
+			inverseJoinColumns = @JoinColumn(name = "match_id", referencedColumnName = "match_id")
+			)
+	private Set<Match> matches;
 
 	public Player() {
 		
