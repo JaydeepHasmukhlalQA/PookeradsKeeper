@@ -53,7 +53,7 @@ class Player {
     }
 
     get getWins() {
-        return this._wins;
+        return this.wins;
     }
 
     addLoss() {
