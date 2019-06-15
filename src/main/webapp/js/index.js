@@ -15,7 +15,7 @@ function logMeInButtonClicked() {
 
     checkFormValidation(usernameInput);
 
-    getPlayerFromAPI(this.getPlayerByNameAPIURL(), usernameInput.value).then((value) => {
+    getPlayerFromAPI(this.getGETPlayerByNameApiUrl(), usernameInput.value).then((value) => {
         sessionStorage.setItem("playerJson", value);
         window.location.assign("playerprofile.html");
     }).catch((value) => {
