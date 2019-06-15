@@ -15,12 +15,11 @@ function logMeInButtonClicked() {
 
     checkFormValidation(usernameInput);
 
-    getPlayerFromAPI(usernameInput.value).then((value) => {
-        console.log(value);
+    getPlayerFromAPI(this.getPlayerByNameApiUrl(), usernameInput.value).then((value) => {
         sessionStorage.setItem("playerJson", value);
         window.location.assign("playerprofile.html");
     }).catch((value) => {
-        console.log(value);
+        //SHOW ERROR
     });
 }
 
@@ -33,9 +32,10 @@ function checkFormValidation(usernameInput) {
     }
 }
 
-function getPlayerFromAPI(username) {
+function getPlayerFromAPI(apiUrl, username) {
     return new Promise(function (resolve, reject) {
-        let getUrl = "http://127.0.0.1:8080/PookeradsKeeper-1.0/api/player/user/" + username;
+        let getUrl = apiUrl + username;
+        console.log(getUrl);
         const XHR = new XMLHttpRequest();
 
         XHR.onreadystatechange = function () {

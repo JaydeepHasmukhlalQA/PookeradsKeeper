@@ -25,7 +25,7 @@ function registerMeButtonClick() {
     let player = new Player(usernameInput.value, firstnameInput.value, lastnameInput.value);
     let jsonObject = JSON.stringify(player);
 
-    postPlayerToAPI(jsonObject).then((value) => {
+    postPlayerToAPI(this.getPlayerApiUrl(), jsonObject).then((value) => {
         showAlert(alertMessage, value, alertType.SUCCESS);
         setTimeout(() => {returnToLoginPage();}, 5000)
         setInterval(() => {informUserRedirect(infoMessage);}, 1000)
@@ -84,9 +84,9 @@ function returnToLoginPage() {
     window.location.assign("index.html");
 }
 
-function postPlayerToAPI(jsonObject) {
+function postPlayerToAPI(apiUrl, jsonObject) {
     return new Promise(function (resolve, reject) {
-        let postUrl = "http://127.0.0.1:8080/PookeradsKeeper-1.0/api/player/";
+        let postUrl = apiUrl;
         const XHR = new XMLHttpRequest();
 
         XHR.onreadystatechange = function () {
