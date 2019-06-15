@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 public class Match {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "match_id")
 	private int id;
 	private String matchName;
@@ -24,24 +25,26 @@ public class Match {
 	public Match() {
 		
 	}
-	
+
+	public String getMatchName() {
+		return matchName;
+	}
+
+	public void setMatchName(String matchName) {
+		this.matchName = matchName;
+	}
+
 	public int getId() {
 		return id;
 	}
 
-	public String getName() {
-		return matchName;
-	}
-
-	public void setName(String name) {
-		this.matchName = name;
-	}
-
-	public Set<Player> getPlayers() {
+	public Set<Player> addPlayer(Player player) {
+		players.add(player);
 		return players;
 	}
-
-	public void setPlayers(Set<Player> players) {
-		this.players = players;
+	
+	public Set<Player> removePlayer(Player player) {
+		players.remove(player);
+		return players;
 	}
 }

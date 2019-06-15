@@ -2,6 +2,7 @@ package com.jay.repository;
 
 import java.util.List;
 
+import com.jay.model.Match;
 import com.jay.model.Player;
 
 public interface PlayerRepository {
@@ -12,4 +13,6 @@ public interface PlayerRepository {
 	public List<Player> getAllPlayers();
 	public void deletePlayer(int id);
 	
+	public Player updateMatch(int playerId, Match match);
+	public Player removeMatch(int playerId, Match match);
 }

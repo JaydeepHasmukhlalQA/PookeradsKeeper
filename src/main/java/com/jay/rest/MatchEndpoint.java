@@ -33,7 +33,7 @@ public class MatchEndpoint {
 	@Path("/match")
 	public Response addMatch(Match match, @Context UriInfo uriInfo) {
 		match = matchRepository.addMatch(match);
-		URI createdUri = uriInfo.getBaseUriBuilder().path("" + match.getName()).build();
+		URI createdUri = uriInfo.getBaseUriBuilder().path("" + match.getMatchName()).build();
 		return Response.ok(createdUri.toString()).status(Status.CREATED).build();
 	}
 	
@@ -91,5 +91,7 @@ public class MatchEndpoint {
 		matchRepository.deleteMatch(id);
 		return Response.noContent().build();
 	}
+	
+	
 	
 }

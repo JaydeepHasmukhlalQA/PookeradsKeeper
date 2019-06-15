@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
 import com.jay.model.Match;
+import com.jay.model.Player;
 
 public class MatchRepositoryDatabase implements MatchRepository {
 
@@ -24,8 +25,7 @@ public class MatchRepositoryDatabase implements MatchRepository {
 	@Transactional(value = TxType.REQUIRED)
 	public Match updateMatch(int id, Match updatedMatch) {
 		Match match = this.getMatchById(id);
-		match.setName(updatedMatch.getName());
-		match.setPlayers(updatedMatch.getPlayers());
+		match.setMatchName(updatedMatch.getMatchName());
 		return match;
 	}
 
@@ -48,6 +48,18 @@ public class MatchRepositoryDatabase implements MatchRepository {
 	@Transactional(value = TxType.REQUIRED)
 	public void deleteMatch(int id) {
 		entityManager.remove(id);
+	}
+
+	public Match updatePlayer(int matchId, Player player) {
+		Match match = this.getMatchById(matchId);
+		match.addPlayer(player);
+		return match;
+	}
+
+	public Match removePlayer(int matchId, Player player) {
+		Match match = this.getMatchById(matchId);
+		match.removePlayer(player);
+		return match;
 	}
 	
 }

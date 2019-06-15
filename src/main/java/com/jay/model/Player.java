@@ -1,6 +1,5 @@
 package com.jay.model;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -8,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -20,7 +20,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "Player")
 public class Player {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "player_id")
 	private int id;
 	@NotNull
@@ -40,7 +40,7 @@ public class Player {
 	private int gotFullBalled;
 	private int fullBalledEnemy;
 	
-	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable
 			(
 			name = "player_match",
@@ -153,6 +153,15 @@ public class Player {
 		return id;
 	}
 	
+	public Set<Match> addMatch(Match match) {
+		matches.add(match);
+		return matches;
+	}
+	
+	public Set<Match> removeMatch(Match match) {
+		matches.remove(match);
+		return matches;
+	}
 	
 
 }

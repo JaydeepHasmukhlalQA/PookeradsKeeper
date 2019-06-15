@@ -70,6 +70,8 @@ public class PlayerEndpoint {
 		return Response.ok(listOfPlayers).build();
 	}
 	
+	
+	
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({"application/json"})
