@@ -9,16 +9,11 @@ let lossStreakLabel;
 let drawsLabel;
 let fullBalledEnemyLabel;
 let gotFullBalledLabel;
-let alertMessage
+let alertMessage;
 
 let deleteMeButton;
 
 let player;
-
-const alertType = {
-    SUCCESS: "alert-success",
-    FAIL: "alert-danger"
-}
 
 function getJsonPlayerFromSession() {
     getAllInput();
@@ -114,7 +109,7 @@ function showAlert(message, alertType) {
 
 function hideAlert() {
     alertMessage.classList.remove("show");
-    alertMessage.classList.add("show");
+    alertMessage.classList.add("fade");
 }
 
 function returnToLoginPage() {

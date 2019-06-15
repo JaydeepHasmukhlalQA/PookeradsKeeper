@@ -55,8 +55,8 @@
 
 
     <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="ccol-md-auto text-center">
+        <div class="row justify-content-md-center align-items-center">
+            <div class="col-md-auto text-center">
                 <h1 class="display-4">Pookerards Login</h1>
                 <form onsubmit="return false" id="loginForm" class="form-inlin justify-content-center">
                     <div class="form-group">
@@ -66,6 +66,12 @@
                     <button onclick="logMeInButtonClicked();" class="btn btn-success ">Log me In</button>
                     <button onclick="registerMeButtonClick();" class="btn btn-success ">Register Me</button>
                 </form>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <div id="alertMessage" class="alert alert-success fade" role="alert">
+                </div>
             </div>
         </div>
     </div>
@@ -81,6 +87,7 @@
         crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="js/hostlocation.js"></script>
+    <script type="text/javascript" src="js/alertType.js"></script>
     <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
 </body>
