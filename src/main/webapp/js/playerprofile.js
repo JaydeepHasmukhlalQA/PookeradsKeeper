@@ -22,6 +22,7 @@ const alertType = {
 
 function getJsonPlayerFromSession() {
     getAllInput();
+    
     let jsonPlayer = sessionStorage.getItem("playerJson");
     player = JSON.parse(jsonPlayer);
 
