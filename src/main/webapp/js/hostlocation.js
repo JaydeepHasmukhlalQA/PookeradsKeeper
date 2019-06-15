@@ -16,10 +16,10 @@ function getAPILocation() {
     return windowLocation.split("/").splice(0, 4).join("/") + "/api/";
 }
 
-function getGETPlayerByNameApiUrl() {
+function getPlayerByNameApiUrl() {
     return getAPILocation() + "player/user/";
 }
 
-function getPOSTPlayerApiUrl() {
+function getPlayerApiUrl() {
     return getAPILocation() + "player/";
 }

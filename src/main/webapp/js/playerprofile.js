@@ -83,7 +83,7 @@ function updateDetailsButtonPressed() {
         let id = player.id;
         let jsonPlayer = JSON.stringify(player);
 
-        updatePlayerToAPI(id, jsonPlayer).then((value) => {
+        updatePlayerToAPI(this.getPlayerApiUrl(), id, jsonPlayer).then((value) => {
             showAlert(value, alertType.SUCCESS);
         }).catch((value) => {
             showAlert(value, alertType.FAIL);
@@ -94,7 +94,7 @@ function updateDetailsButtonPressed() {
 function deleteMeButtonPressed() {
     let id = player.id;
 
-    deletePlayerFromAPI(id).then((value) => {
+    deletePlayerFromAPI(this.getPlayerApiUrl(), id).then((value) => {
         showAlert(value, alertType.SUCCESS);
         setTimeout(() => {returnToLoginPage();}, 3000)
     }).catch((value) => {
@@ -126,9 +126,9 @@ function updatePlayerObject() {
     player.lastname = lastnameInput.value;
 }
 
-function updatePlayerToAPI(id, jsonPlayer) {
+function updatePlayerToAPI(apiUrl, id, jsonPlayer) {
     return new Promise(function (resolve, reject) {
-        let putUrl = "http://127.0.0.1:8080/PookeradsKeeper-1.0/api/player/" + id;
+        let putUrl = apiUrl + id;
         const XHR = new XMLHttpRequest();
 
         XHR.onreadystatechange = function () {
@@ -147,9 +147,9 @@ function updatePlayerToAPI(id, jsonPlayer) {
     });
 }
 
-function deletePlayerFromAPI(id) {
+function deletePlayerFromAPI(apiUrl, id) {
     return new Promise(function (resolve, reject) {
-        let deleteUrl = "http://127.0.0.1:8080/PookeradsKeeper-1.0/api/player/" + id;
+        let deleteUrl = apiUrl + id;
         const XHR = new XMLHttpRequest();
 
         XHR.onreadystatechange = function () {
