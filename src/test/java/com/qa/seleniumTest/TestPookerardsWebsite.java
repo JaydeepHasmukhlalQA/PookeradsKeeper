@@ -67,11 +67,13 @@ public class TestPookerardsWebsite {
 		PookerardsRegisterPage registerPage = new PookerardsRegisterPage(webDriver);
 		
 		registerPage.loadRegisterPage();
+		System.out.println("Assert Load Register Page");
 		assertTrue(unexpectedResultLoadPage, registerPage.isRegisterPageOpen());
 		
 		registerPage.enterDetailsToRegister(username, firstname, lastname);
 		registerPage.clickRegisterButton();
 		
+		System.out.println(registerPage.didFailToRegister());
 		assertTrue(unexpectedResultRegistered, registerPage.didFailToRegister());
 	}
 	

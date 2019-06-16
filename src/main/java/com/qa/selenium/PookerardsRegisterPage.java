@@ -35,7 +35,7 @@ public class PookerardsRegisterPage {
 	@FindBy(xpath = "//*[@id=\"alertMessage\"]")
 	private WebElement successAlert;
 	
-	@FindBy(xpath = "//*[@id=\"infoMessage\"]")
+	@FindBy(xpath = "//*[@id=\"alertMessage\"]")
 	private WebElement failAlert;
 	
 	private WebDriver webDriver;
