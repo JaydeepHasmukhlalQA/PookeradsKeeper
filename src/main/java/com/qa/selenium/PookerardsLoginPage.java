@@ -28,8 +28,8 @@ public class PookerardsLoginPage {
 	@FindBy(xpath = "//*[@id=\"loginForm\"]/button[2]")
 	WebElement registerButton;
 	
-	@FindBy(xpath = "//*[@id=\"playerFullnameTag\"]")
-	WebElement profilePageFullnameHeader;
+	@FindBy(xpath = "//*[@id=\"usernameLabel\"]")
+	WebElement profilePageUsername;
 	
 	private WebDriver webDriver;
 	private WebDriverWait waitDriver;
@@ -57,9 +57,8 @@ public class PookerardsLoginPage {
 		return loginPageHeader.getText().contains(loginPageHeaderText);
 	}
 	
-	public boolean redirectedToProfilePage() {
-		String profilePageFullnameHeaderText = "";
-		return waitDriver.until(ExpectedConditions.textToBePresentInElement(profilePageFullnameHeader, profilePageFullnameHeaderText));
+	public boolean redirectedToProfilePage(String profilePageFullnameHeaderText) {
+		return waitDriver.until(ExpectedConditions.textToBePresentInElement(profilePageUsername, profilePageFullnameHeaderText));
 	}
 	
 	public boolean redirectedToRegisterPage() {

@@ -13,6 +13,7 @@ import com.qa.categories.Create;
 import com.qa.categories.Fail;
 import com.qa.categories.Read;
 import com.qa.selenium.PookerardsLoginPage;
+import com.qa.selenium.PookerardsProfilePage;
 import com.qa.selenium.PookerardsRegisterPage;
 
 public class TestPookerardsWebsite {
@@ -30,70 +31,101 @@ public class TestPookerardsWebsite {
 		webDriver.quit();
 	}
 	
-	@Category(Create.class)
-	@Test
-	public void TestRegisterPlayer() {
-		System.out.println("TEST REGISTER PLAYER");
-		String username = "jaydeeph";
-		String firstname = "Jaydeep";
-		String lastname = "Hasmukhlal";
-		String unexpectedResultLoadPage = "Error: Register page not open.";
-		String unexpectedResultRegister = "Error: Did not register.";
-		String unexpectedResultRedirect = "Error: Did not re-direct to login page.";
-		
-		PookerardsRegisterPage registerPage = new PookerardsRegisterPage(webDriver);
-		
-		registerPage.loadRegisterPage();
-		assertTrue(unexpectedResultLoadPage, registerPage.isRegisterPageOpen());
-		
-		registerPage.enterDetailsToRegister(username, firstname, lastname);
-		registerPage.clickRegisterButton();
-		
-		assertTrue(unexpectedResultRegister, registerPage.didRegisterSuccessfully());
-		assertTrue(unexpectedResultRedirect, registerPage.redirectedToLoginPage());
-		
-	}
+//	@Test
+//	public void TestRegisterPlayer() {
+//		System.out.println("TEST REGISTER PLAYER");
+//		String username = "jaydeeph";
+//		String firstname = "Jaydeep";
+//		String lastname = "Hasmukhlal";
+//		String unexpectedResultLoadPage = "Error: Register page not open.";
+//		String unexpectedResultRegister = "Error: Did not register.";
+//		String unexpectedResultRedirect = "Error: Did not re-direct to login page.";
+//		
+//		PookerardsRegisterPage registerPage = new PookerardsRegisterPage(webDriver);
+//		
+//		registerPage.loadRegisterPage();
+//		assertTrue(unexpectedResultLoadPage, registerPage.isRegisterPageOpen());
+//		
+//		registerPage.enterDetailsToRegister(username, firstname, lastname);
+//		registerPage.clickRegisterButton();
+//		
+//		assertTrue(unexpectedResultRegister, registerPage.didRegisterSuccessfully());
+//		assertTrue(unexpectedResultRedirect, registerPage.redirectedToLoginPage());
+//	}
+//	
+//	@Test
+//	public void TestFailToRegisterPlayer() {
+//		System.out.println("TEST FAIL REGISTER PLAYER");
+//		String username = "jaydeeph";
+//		String firstname = "Jaydeep";
+//		String lastname = "Hasmukhlal";
+//		String unexpectedResultLoadPage = "Error: Register page not open.";
+//		String unexpectedResultRegistered = "Error: Player was registered.";
+//		
+//		PookerardsRegisterPage registerPage = new PookerardsRegisterPage(webDriver);
+//		
+//		registerPage.loadRegisterPage();
+//		assertTrue(unexpectedResultLoadPage, registerPage.isRegisterPageOpen());
+//		
+//		registerPage.enterDetailsToRegister(username, firstname, lastname);
+//		registerPage.clickRegisterButton();
+//		
+//		assertTrue(unexpectedResultRegistered, registerPage.didFailToRegister());
+//	}
+//	
+//	@Test
+//	public void TestLoginPlayer() {
+//		System.out.println("TEST LOGIN PLAYER");
+//		String username = "jaydeeph";
+//		String unexpectedResultLoadPage = "Error: Could not load login page.";
+//		String unexpectedResultRedirectProfilePage = "Error: Did not redirect to profile page.";
+//		
+//		PookerardsLoginPage loginPage = new PookerardsLoginPage(webDriver);
+//		
+//		loginPage.loadLoginPage();
+//		assertTrue(unexpectedResultLoadPage, loginPage.isLoginPageOpen());
+//		
+//		loginPage.enterUsername(username);
+//		loginPage.pressLoginButton();
+//		
+//		assertTrue(unexpectedResultRedirectProfilePage, loginPage.redirectedToProfilePage(username));
+//		
+//	}
 	
-	@Category(Fail.class)
 	@Test
-	public void TestFailToRegisterPlayer() {
-		System.out.println("TEST FAIL REGISTER PLAYER");
+	public void testUpdatePlayerDetails() {
+		System.out.println("TEST UPDATE DETAILS");
+		
 		String username = "jaydeeph";
-		String firstname = "Jaydeep";
-		String lastname = "Hasmukhlal";
-		String unexpectedResultLoadPage = "Error: Register page not open.";
-		String unexpectedResultRegistered = "Error: Player was registered.";
-		
-		PookerardsRegisterPage registerPage = new PookerardsRegisterPage(webDriver);
-		
-		registerPage.loadRegisterPage();
-		System.out.println("Assert Load Register Page");
-		assertTrue(unexpectedResultLoadPage, registerPage.isRegisterPageOpen());
-		
-		registerPage.enterDetailsToRegister(username, firstname, lastname);
-		registerPage.clickRegisterButton();
-		
-		System.out.println(registerPage.didFailToRegister());
-		assertTrue(unexpectedResultRegistered, registerPage.didFailToRegister());
-	}
-	
-	@Category(Read.class)
-	@Test
-	public void TestLoginPlayer() {
-		System.out.println("TEST LOGIN PLAYER");
-		String username = "jaydeeph";
-		String unexpectedResultLoadPage = "Error: Could not load login page.";
+		String unexpectedResultLoadLoginPage = "Error: Could not load login page.";
 		String unexpectedResultRedirectProfilePage = "Error: Did not redirect to profile page.";
 		
 		PookerardsLoginPage loginPage = new PookerardsLoginPage(webDriver);
 		
 		loginPage.loadLoginPage();
-		assertTrue(unexpectedResultLoadPage, loginPage.isLoginPageOpen());
+		assertTrue(unexpectedResultLoadLoginPage, loginPage.isLoginPageOpen());
 		
 		loginPage.enterUsername(username);
 		loginPage.pressLoginButton();
 		
-		assertTrue(unexpectedResultRedirectProfilePage, loginPage.redirectedToProfilePage());
+		assertTrue(unexpectedResultRedirectProfilePage, loginPage.redirectedToProfilePage(username));
+		
+		String firstname = "Allan";
+		String lastname = "Charles";
+		String unexpectedResultLoadProfilePage = "Error: Could not load profile page";
+		String unexpectedResultUpdate = "Error: Could not update account.";
+		
+		PookerardsProfilePage profilePage = new PookerardsProfilePage(webDriver);
+		
+		profilePage.loadPlayerProfilePage();
+		assertTrue(unexpectedResultLoadProfilePage, profilePage.isPlayerProfilePageOpen());
+		
+		profilePage.clickUpdateDetailsButton();
+		profilePage.enterFirstname(firstname);
+		profilePage.enterLastname(lastname);
+		profilePage.clickUpdateDetailsButton();
+		
+		assertTrue(unexpectedResultUpdate, profilePage.didSuccessfullyUpdateAccount(firstname));
 		
 	}
 	
