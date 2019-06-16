@@ -13,7 +13,7 @@ function getWarFileName() {
 }
 
 function getAPILocation() {
-    return windowLocation.split("/").splice(0, 4).join("/") + "/api/";
+    return windowLocation.split("/").slice(0, 4).join("/") + "/api/";
 }
 
 function getPlayerByNameApiUrl() {
