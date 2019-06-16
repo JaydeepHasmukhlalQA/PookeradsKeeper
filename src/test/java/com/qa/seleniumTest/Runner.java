@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.qa.selenium.PookerardsLoginPage;
 import com.qa.selenium.PookerardsRegisterPage;
 
 public class Runner {
@@ -34,7 +35,6 @@ public class Runner {
 		PookerardsRegisterPage registerPage = new PookerardsRegisterPage(webDriver);
 		
 		registerPage.loadRegisterPage();
-		
 		assertTrue("Error: Register page not open.", registerPage.isRegisterPageOpen());
 		
 		registerPage.enterDetailsToRegister(username, firstname, lastname);
@@ -42,6 +42,24 @@ public class Runner {
 		
 		assertTrue("Error: Did not register.", registerPage.didRegisterSuccessfully());
 		assertTrue("Error: Did not re-direct to login page.", registerPage.redirectedToLoginPage());
+		
+	}
+	
+	@Test
+	public void TestLoginPlayer() throws InterruptedException {
+		String username = "jaydeeph";
+		String unexpectedResultLoadPage = "Error: Could not load login page.";
+		String unexpectedResultRedirectProfilePage = "Error: Did not redirect to profile page.";
+		
+		PookerardsLoginPage loginPage = new PookerardsLoginPage(webDriver);
+		
+		loginPage.loadLoginPage();
+		assertTrue(unexpectedResultLoadPage, loginPage.isLoginPageOpen());
+		
+		loginPage.enterUsername(username);
+		loginPage.pressLoginButton();
+		
+		assertTrue(unexpectedResultRedirectProfilePage, loginPage.redirectedToProfilePage());
 		
 	}
 	
