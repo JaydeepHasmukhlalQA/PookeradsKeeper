@@ -5,13 +5,17 @@ import static org.junit.Assert.assertTrue;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.qa.categories.Create;
+import com.qa.categories.Fail;
+import com.qa.categories.Read;
 import com.qa.selenium.PookerardsLoginPage;
 import com.qa.selenium.PookerardsRegisterPage;
 
-public class Runner {
+public class TestPookerardsWebsite {
 
 	WebDriver webDriver;
 	
@@ -26,8 +30,10 @@ public class Runner {
 		webDriver.quit();
 	}
 	
+	@Category(Create.class)
 	@Test
 	public void TestRegisterPlayer() {
+		System.out.println("TEST REGISTER PLAYER");
 		String username = "jaydeeph";
 		String firstname = "Jaydeep";
 		String lastname = "Hasmukhlal";
@@ -48,8 +54,31 @@ public class Runner {
 		
 	}
 	
+	@Category(Fail.class)
 	@Test
-	public void TestLoginPlayer() throws InterruptedException {
+	public void TestFailToRegisterPlayer() {
+		System.out.println("TEST FAIL REGISTER PLAYER");
+		String username = "jaydeeph";
+		String firstname = "Jaydeep";
+		String lastname = "Hasmukhlal";
+		String unexpectedResultLoadPage = "Error: Register page not open.";
+		String unexpectedResultRegistered = "Error: Player was registered.";
+		
+		PookerardsRegisterPage registerPage = new PookerardsRegisterPage(webDriver);
+		
+		registerPage.loadRegisterPage();
+		assertTrue(unexpectedResultLoadPage, registerPage.isRegisterPageOpen());
+		
+		registerPage.enterDetailsToRegister(username, firstname, lastname);
+		registerPage.clickRegisterButton();
+		
+		assertTrue(unexpectedResultRegistered, registerPage.didFailToRegister());
+	}
+	
+	@Category(Read.class)
+	@Test
+	public void TestLoginPlayer() {
+		System.out.println("TEST LOGIN PLAYER");
 		String username = "jaydeeph";
 		String unexpectedResultLoadPage = "Error: Could not load login page.";
 		String unexpectedResultRedirectProfilePage = "Error: Did not redirect to profile page.";
