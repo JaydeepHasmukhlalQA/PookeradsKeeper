@@ -1,11 +1,11 @@
-package com.jay.testModel;
+package com.qa.testModel;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.jay.model.Player;
+import com.qa.model.Player;
 
 public class TestModel {
 

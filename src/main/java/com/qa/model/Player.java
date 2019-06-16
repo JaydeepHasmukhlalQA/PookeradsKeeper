@@ -1,4 +1,4 @@
-package com.jay.model;
+package com.qa.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

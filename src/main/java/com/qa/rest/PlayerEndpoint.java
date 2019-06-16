@@ -1,4 +1,4 @@
-package com.jay.rest;
+package com.qa.rest;
 
 import java.net.URI;
 import java.util.List;
@@ -18,8 +18,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.Response.Status;
 
-import com.jay.model.Player;
-import com.jay.repository.PlayerRepository;
+import com.qa.model.Player;
+import com.qa.repository.PlayerRepository;
 
 @Path("/")
 public class PlayerEndpoint {

@@ -1,8 +1,8 @@
-package com.jay.repository;
+package com.qa.repository;
 
 import java.util.List;
 
-import com.jay.model.Player;
+import com.qa.model.Player;
 
 public interface PlayerRepository {
 	public Player addPlayer(Player player);
