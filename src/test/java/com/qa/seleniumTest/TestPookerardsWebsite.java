@@ -91,12 +91,50 @@ public class TestPookerardsWebsite {
 //		assertTrue(unexpectedResultRedirectProfilePage, loginPage.redirectedToProfilePage(username));
 //		
 //	}
+//	
+//	@Test
+//	public void testUpdatePlayerDetails() {
+//		System.out.println("TEST UPDATE DETAILS");
+//		
+//		String username = "jaydeeph";
+//		String unexpectedResultLoadLoginPage = "Error: Could not load login page.";
+//		String unexpectedResultRedirectProfilePage = "Error: Did not redirect to profile page.";
+//		
+//		PookerardsLoginPage loginPage = new PookerardsLoginPage(webDriver);
+//		
+//		loginPage.loadLoginPage();
+//		assertTrue(unexpectedResultLoadLoginPage, loginPage.isLoginPageOpen());
+//		
+//		loginPage.enterUsername(username);
+//		loginPage.pressLoginButton();
+//		
+//		assertTrue(unexpectedResultRedirectProfilePage, loginPage.redirectedToProfilePage(username));
+//		
+//		
+//		String firstname = "Allan";
+//		String lastname = "Charles";
+//		String unexpectedResultLoadProfilePage = "Error: Could not load profile page";
+//		String unexpectedResultUpdate = "Error: Could not update account.";
+//		
+//		PookerardsProfilePage profilePage = new PookerardsProfilePage(webDriver);
+//		
+//		profilePage.loadPlayerProfilePage();
+//		assertTrue(unexpectedResultLoadProfilePage, profilePage.isPlayerProfilePageOpen());
+//		
+//		profilePage.clickUpdateDetailsButton();
+//		profilePage.enterFirstname(firstname);
+//		profilePage.enterLastname(lastname);
+//		profilePage.clickUpdateDetailsButton();
+//		
+//		assertTrue(unexpectedResultUpdate, profilePage.didSuccessfullyUpdateAccount(firstname));
+//	}
 	
 	@Test
-	public void testUpdatePlayerDetails() {
-		System.out.println("TEST UPDATE DETAILS");
+	public void testDeletePlayerAccount() {
+		System.out.println("TEST DELETE PLAYER ACCOUNT");
 		
 		String username = "jaydeeph";
+		String firstname = "Allan";
 		String unexpectedResultLoadLoginPage = "Error: Could not load login page.";
 		String unexpectedResultRedirectProfilePage = "Error: Did not redirect to profile page.";
 		
@@ -109,23 +147,24 @@ public class TestPookerardsWebsite {
 		loginPage.pressLoginButton();
 		
 		assertTrue(unexpectedResultRedirectProfilePage, loginPage.redirectedToProfilePage(username));
+	
 		
-		String firstname = "Allan";
-		String lastname = "Charles";
 		String unexpectedResultLoadProfilePage = "Error: Could not load profile page";
-		String unexpectedResultUpdate = "Error: Could not update account.";
+		String unexpectedResultDeleteAccount = "Error: Could not delete account.";
 		
 		PookerardsProfilePage profilePage = new PookerardsProfilePage(webDriver);
 		
 		profilePage.loadPlayerProfilePage();
 		assertTrue(unexpectedResultLoadProfilePage, profilePage.isPlayerProfilePageOpen());
 		
-		profilePage.clickUpdateDetailsButton();
-		profilePage.enterFirstname(firstname);
-		profilePage.enterLastname(lastname);
-		profilePage.clickUpdateDetailsButton();
+		System.out.println("Click Edit Button");
+		profilePage.clickEditDetailsButton();
+		System.out.println("Click Delete Button");
+		profilePage.clickDeleteDetailsButton();
+		System.out.println("Click Please Delete Button");
+		profilePage.clickPleaseDeleteMyAccountButton();
 		
-		assertTrue(unexpectedResultUpdate, profilePage.didSuccessfullyUpdateAccount(firstname));
+		assertTrue(unexpectedResultDeleteAccount, profilePage.didSuccessfullyDeleteAccount(firstname));
 		
 	}
 	
