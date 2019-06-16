@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class PookerardsLoginPage {
 
 	private static final String LOGIN_PAGE_URL = "http://35.234.137.70:8080/PookeradsKeeper-1.0/index.html";
-	private static final int TIMEOUT = 10;
+	private static final int TIMEOUT = 5;
 	
 	@FindBy(xpath = "/html/body/div[3]/div[1]/div/h1")
 	WebElement loginPageHeader;

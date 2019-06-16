@@ -10,15 +10,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class PookerardsRegisterPage {
 	
 	private static final String REGISTER_PAGE_URL = "http://35.234.137.70:8080/PookeradsKeeper-1.0/register.html";
-	private static final int TIMEOUT = 10;
+	private static final int TIMEOUT = 5;
 	
 	
 
 	@FindBy(xpath = "/html/body/div[3]/div[1]/div/h1")
-	private WebElement loginHeader;
+	private WebElement loginPageHeader;
 	
 	@FindBy(xpath = "/html/body/div[2]/div/div/h1")
-	private WebElement registerHeader;
+	private WebElement registerPageHeader;
 	
 	@FindBy(xpath = "//*[@id=\"registerForm\"]/div[1]/input")
 	private WebElement usernameInput;
@@ -74,7 +74,7 @@ public class PookerardsRegisterPage {
 	}
 	
 	public boolean isRegisterPageOpen() {
-		return registerHeader.getText().contains("Pookerards Register");
+		return registerPageHeader.getText().contains("Pookerards Register");
 	}
 	
 	public boolean didRegisterSuccessfully() {
@@ -89,7 +89,7 @@ public class PookerardsRegisterPage {
 	
 	public boolean redirectedToLoginPage() {
 		String loginHeaderText = "Pookerards Login";
-		return waitDriver.until(ExpectedConditions.textToBePresentInElement(loginHeader, loginHeaderText));
+		return waitDriver.until(ExpectedConditions.textToBePresentInElement(loginPageHeader, loginHeaderText));
 	}
 	
 }

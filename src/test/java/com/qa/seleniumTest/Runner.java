@@ -31,17 +31,20 @@ public class Runner {
 		String username = "jaydeeph";
 		String firstname = "Jaydeep";
 		String lastname = "Hasmukhlal";
+		String unexpectedResultLoadPage = "Error: Register page not open.";
+		String unexpectedResultRegister = "Error: Did not register.";
+		String unexpectedResultRedirect = "Error: Did not re-direct to login page.";
 		
 		PookerardsRegisterPage registerPage = new PookerardsRegisterPage(webDriver);
 		
 		registerPage.loadRegisterPage();
-		assertTrue("Error: Register page not open.", registerPage.isRegisterPageOpen());
+		assertTrue(unexpectedResultLoadPage, registerPage.isRegisterPageOpen());
 		
 		registerPage.enterDetailsToRegister(username, firstname, lastname);
 		registerPage.clickRegisterButton();
 		
-		assertTrue("Error: Did not register.", registerPage.didRegisterSuccessfully());
-		assertTrue("Error: Did not re-direct to login page.", registerPage.redirectedToLoginPage());
+		assertTrue(unexpectedResultRegister, registerPage.didRegisterSuccessfully());
+		assertTrue(unexpectedResultRedirect, registerPage.redirectedToLoginPage());
 		
 	}
 	
