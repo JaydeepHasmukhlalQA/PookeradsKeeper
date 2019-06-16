@@ -130,11 +130,10 @@ public class TestPookerardsWebsite {
 //	}
 	
 	@Test
-	public void testDeletePlayerAccount() {
+	public void testCancelDeletePlayerAccount() {
 		System.out.println("TEST DELETE PLAYER ACCOUNT");
 		
 		String username = "jaydeeph";
-		String firstname = "Allan";
 		String unexpectedResultLoadLoginPage = "Error: Could not load login page.";
 		String unexpectedResultRedirectProfilePage = "Error: Did not redirect to profile page.";
 		
@@ -150,23 +149,56 @@ public class TestPookerardsWebsite {
 	
 		
 		String unexpectedResultLoadProfilePage = "Error: Could not load profile page";
-		String unexpectedResultDeleteAccount = "Error: Could not delete account.";
+		String unexpectedResultDeletedAccount = "Error: Deleted account.";
 		
 		PookerardsProfilePage profilePage = new PookerardsProfilePage(webDriver);
 		
 		profilePage.loadPlayerProfilePage();
 		assertTrue(unexpectedResultLoadProfilePage, profilePage.isPlayerProfilePageOpen());
 		
-		System.out.println("Click Edit Button");
 		profilePage.clickEditDetailsButton();
-		System.out.println("Click Delete Button");
 		profilePage.clickDeleteDetailsButton();
-		System.out.println("Click Please Delete Button");
-		profilePage.clickPleaseDeleteMyAccountButton();
+		profilePage.clickNoIMadeAMistakeButton();
 		
-		assertTrue(unexpectedResultDeleteAccount, profilePage.didSuccessfullyDeleteAccount(firstname));
-		
+		assertTrue(unexpectedResultDeletedAccount, profilePage.isPlayerProfilePageOpen());
 	}
+	
+//	@Test
+//	public void testDeletePlayerAccount() {
+//		System.out.println("TEST DELETE PLAYER ACCOUNT");
+//		
+//		String username = "jaydeeph";
+//		String firstname = "Allan";
+//		String unexpectedResultLoadLoginPage = "Error: Could not load login page.";
+//		String unexpectedResultRedirectProfilePage = "Error: Did not redirect to profile page.";
+//		
+//		PookerardsLoginPage loginPage = new PookerardsLoginPage(webDriver);
+//		
+//		loginPage.loadLoginPage();
+//		assertTrue(unexpectedResultLoadLoginPage, loginPage.isLoginPageOpen());
+//		
+//		loginPage.enterUsername(username);
+//		loginPage.pressLoginButton();
+//		
+//		assertTrue(unexpectedResultRedirectProfilePage, loginPage.redirectedToProfilePage(username));
+//	
+//		
+//		String unexpectedResultLoadProfilePage = "Error: Could not load profile page";
+//		String unexpectedResultDeleteAccount = "Error: Could not delete account.";
+//		
+//		PookerardsProfilePage profilePage = new PookerardsProfilePage(webDriver);
+//		
+//		profilePage.loadPlayerProfilePage();
+//		assertTrue(unexpectedResultLoadProfilePage, profilePage.isPlayerProfilePageOpen());
+//		
+//		profilePage.clickEditDetailsButton();
+//		profilePage.clickDeleteDetailsButton();
+//		profilePage.clickPleaseDeleteMyAccountButton();
+//		
+//		assertTrue(unexpectedResultDeleteAccount, profilePage.didSuccessfullyDeleteAccount(firstname));
+//	}
+	
+	
 	
 	
 }
