@@ -17,7 +17,7 @@ let player;
 
 function getJsonPlayerFromSession() {
     getAllInput();
-    
+
     let jsonPlayer = sessionStorage.getItem("playerJson");
     player = JSON.parse(jsonPlayer);
 
@@ -53,6 +53,54 @@ function getAllInput() {
 
     deleteMeButton = document.getElementById("deleteMeButton");
     deleteMeButton.style.display = "none";
+}
+
+function addWin() {
+    addWinLogic();
+    winsLabel.innerHTML = player.wins;
+    winStreaksLabel.innerHTML = player.winStreaks;
+
+    let id = player.id;
+    let jsonPlayer = JSON.stringify(player);
+
+    updatePlayerToAPI(this.getPlayerApiUrl(), id, jsonPlayer).then((value) => {
+        showAlert(value, alertType.SUCCESS);
+    }).catch((value) => {
+        showAlert(value, alertType.FAIL);
+    });
+}
+
+function addWinLogic() {
+    player.wins++;
+    player.winStreakCounter++;
+    if (player.winStreakCounter > player.winStreaks) {
+        player.winStreaks++;
+        player.lossStreakCounter = 0;
+    }
+}
+
+function addLoss() {
+    addLossLogic();
+    lossesLabel.innerHTML = player.loses;
+    lossStreakLabel.innerHTML = player.lossStreaks;
+
+    let id = player.id;
+    let jsonPlayer = JSON.stringify(player);
+
+    updatePlayerToAPI(this.getPlayerApiUrl(), id, jsonPlayer).then((value) => {
+        showAlert(value, alertType.SUCCESS);
+    }).catch((value) => {
+        showAlert(value, alertType.FAIL);
+    });
+}
+
+function addLossLogic() {
+    player.loses++;
+    player.lossStreakCounter++;
+    if (player.lossStreakCounter > player.lossStreaks) {
+        player.lossStreaks++;
+        player.winStreakCounter = 0;
+    }
 }
 
 function updateDetailsButtonPressed() {
@@ -91,7 +139,7 @@ function deleteMeButtonPressed() {
 
     deletePlayerFromAPI(this.getPlayerApiUrl(), id).then((value) => {
         showAlert(value, alertType.SUCCESS);
-        setTimeout(() => {returnToLoginPage();}, 3000)
+        setTimeout(() => { returnToLoginPage(); }, 3000)
     }).catch((value) => {
         showAlert(value, alertType.FAIL);
     });
