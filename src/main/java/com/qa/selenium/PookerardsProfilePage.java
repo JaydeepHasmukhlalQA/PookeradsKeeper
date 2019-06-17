@@ -22,6 +22,18 @@ public class PookerardsProfilePage {
 	
 	@FindBy(xpath = "//*[@id=\"lastnameInput\"]")
 	private WebElement lastnameInput;
+	
+	@FindBy(xpath = "//*[@id=\"winsLabel\"]")
+	private WebElement winsLabel;
+	
+	@FindBy(xpath = "//*[@id=\"lossesLabel\"]")
+	private WebElement lossLabel;
+	
+	@FindBy(xpath = "//*[@id=\"addWinButton\"]")
+	private WebElement addWinButton;
+	
+	@FindBy(xpath = "//*[@id=\"addLossButton\"]")
+	private WebElement addLossButton;
 
 	@FindBy(xpath = "//*[@id=\"updateDetailsButton\"]")
 	private WebElement editUpdateButton;
@@ -68,6 +80,14 @@ public class PookerardsProfilePage {
 		editUpdateButton.click();
 	}
 	
+	public void clickAddWinButton() {
+		addWinButton.click();
+	}
+	
+	public void clickAddLossButton() {
+		addLossButton.click();
+	}
+	
 	public void clickUpdateDetailsButton() {
 		editUpdateButton.click();
 	}
@@ -89,6 +109,14 @@ public class PookerardsProfilePage {
 	public boolean isPlayerProfilePageOpen() {
 		WebElement foundPlayerProfileName = waitDriver.until(ExpectedConditions.visibilityOf(playerProfileImage));
 		return foundPlayerProfileName.isDisplayed();
+	}
+	
+	public boolean didSuccessfullyAddWins(String wins) {
+		return waitDriver.until(ExpectedConditions.textToBePresentInElement(winsLabel, wins));
+	}
+	
+	public boolean didSuccessfullyAddLoss(String loss) {
+		return waitDriver.until(ExpectedConditions.textToBePresentInElement(lossLabel, loss));
 	}
 	
 	public boolean didSuccessfullyUpdateAccount(String firstname) {

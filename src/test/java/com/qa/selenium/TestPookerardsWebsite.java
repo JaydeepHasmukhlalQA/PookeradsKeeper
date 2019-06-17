@@ -32,7 +32,6 @@ public class TestPookerardsWebsite {
 	
 	@Test
 	public void testRegisterPlayer() {
-		System.out.println("TEST REGISTER PLAYER");
 		String username = "jaydeeph";
 		String firstname = "Jaydeep";
 		String lastname = "Hasmukhlal";
@@ -54,7 +53,6 @@ public class TestPookerardsWebsite {
 	
 	@Test
 	public void testFailToRegisterPlayer() {
-		System.out.println("TEST FAIL REGISTER PLAYER");
 		String username = "jaydeeph";
 		String firstname = "Jaydeep";
 		String lastname = "Hasmukhlal";
@@ -74,7 +72,6 @@ public class TestPookerardsWebsite {
 	
 	@Test
 	public void testLoginPlayer() {
-		System.out.println("TEST LOGIN PLAYER");
 		String username = "jaydeeph";
 		String unexpectedResultLoadPage = "Error: Could not load login page.";
 		String unexpectedResultRedirectProfilePage = "Error: Did not redirect to profile page.";
@@ -92,9 +89,7 @@ public class TestPookerardsWebsite {
 	}
 	
 	@Test
-	public void testUpdatePlayerDetails() {
-		System.out.println("TEST UPDATE DETAILS");
-		
+	public void testUpdatePlayerDetails() {		
 		String username = "jaydeeph";
 		String unexpectedResultLoadLoginPage = "Error: Could not load login page.";
 		String unexpectedResultRedirectProfilePage = "Error: Did not redirect to profile page.";
@@ -129,9 +124,71 @@ public class TestPookerardsWebsite {
 	}
 	
 	@Test
-	public void testCancelDeletePlayerAccount() {
-		System.out.println("TEST DELETE PLAYER ACCOUNT");
+	public void testAddWinsToPlayer() throws InterruptedException {
+		String username = "jaydeeph";
+		String unexpectedResultLoadLoginPage = "Error: Could not load login page.";
+		String unexpectedResultRedirectProfilePage = "Error: Did not redirect to profile page.";
 		
+		PookerardsLoginPage loginPage = new PookerardsLoginPage(webDriver);
+		
+		loginPage.loadLoginPage();
+		assertTrue(unexpectedResultLoadLoginPage, loginPage.isLoginPageOpen());
+		
+		loginPage.enterUsername(username);
+		loginPage.pressLoginButton();
+		
+		assertTrue(unexpectedResultRedirectProfilePage, loginPage.redirectedToProfilePage(username));
+		
+		
+		String unexpectedResultLoadProfilePage = "Error: Could not load profile page";
+		String unexpectedResultWinAdded = "Error: Wrong ammount win added.";
+		
+		PookerardsProfilePage profilePage = new PookerardsProfilePage(webDriver);
+		assertTrue(unexpectedResultLoadProfilePage, profilePage.isPlayerProfilePageOpen());
+		
+		String numberOfWinsAdded = "2";
+		
+		profilePage.clickAddWinButton();
+		Thread.sleep(500);
+		profilePage.clickAddWinButton();
+		Thread.sleep(500);
+		assertTrue(unexpectedResultWinAdded, profilePage.didSuccessfullyAddWins(numberOfWinsAdded));
+	}
+	
+	@Test
+	public void testAddLossToPlayer() throws InterruptedException {
+		String username = "jaydeeph";
+		String unexpectedResultLoadLoginPage = "Error: Could not load login page.";
+		String unexpectedResultRedirectProfilePage = "Error: Did not redirect to profile page.";
+		
+		PookerardsLoginPage loginPage = new PookerardsLoginPage(webDriver);
+		
+		loginPage.loadLoginPage();
+		assertTrue(unexpectedResultLoadLoginPage, loginPage.isLoginPageOpen());
+		
+		loginPage.enterUsername(username);
+		loginPage.pressLoginButton();
+		
+		assertTrue(unexpectedResultRedirectProfilePage, loginPage.redirectedToProfilePage(username));
+		
+		
+		String unexpectedResultLoadProfilePage = "Error: Could not load profile page";
+		String unexpectedResultLossAdded = "Error: Wrong ammount of loss added.";
+		
+		PookerardsProfilePage profilePage = new PookerardsProfilePage(webDriver);
+		assertTrue(unexpectedResultLoadProfilePage, profilePage.isPlayerProfilePageOpen());
+		
+		String numberOfLossesAdded = "1";
+		
+		profilePage.clickAddLossButton();
+		Thread.sleep(500);
+		
+		assertTrue(unexpectedResultLossAdded, profilePage.didSuccessfullyAddLoss(numberOfLossesAdded));
+		
+	}
+	
+	@Test
+	public void testCancelDeletePlayerAccount() {		
 		String username = "jaydeeph";
 		String unexpectedResultLoadLoginPage = "Error: Could not load login page.";
 		String unexpectedResultRedirectProfilePage = "Error: Did not redirect to profile page.";
@@ -163,9 +220,7 @@ public class TestPookerardsWebsite {
 	}
 	
 	@Test
-	public void testDeletePlayerAccount() {
-		System.out.println("TEST DELETE PLAYER ACCOUNT");
-		
+	public void testDeletePlayerAccount() {		
 		String username = "jaydeeph";
 		String firstname = "Allan";
 		String unexpectedResultLoadLoginPage = "Error: Could not load login page.";
