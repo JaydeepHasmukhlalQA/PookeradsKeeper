@@ -43,7 +43,7 @@ class Player {
         return this.lastname;
     }
 
-    addWins() {
+    addWin() {
         this.wins++;
         this.winStreakCounter++;
         if (this.winStreakCounter > this.winStreaks) {
@@ -51,11 +51,29 @@ class Player {
             this.lossStreakCounter = 0;
         }
     }
+    set setWins(value) {
+        this.wins = value;
+    }
 
     get getWins() {
         return this.wins;
     }
 
+    set setWinStreaks(value) {
+        this.winStreaks = value;
+    }
+
+    get getWinStreaks() {
+        return this.winStreaks;
+    }
+
+    get getWinStreakCounter() {
+        return this.winStreakCounter
+    }
+
+    set setWinStreakCounter(value) {
+        this.winStreakCounter = value;
+    }
     addLoss() {
         this.loses++;
         this.lossStreakCounter++;
@@ -65,8 +83,28 @@ class Player {
         }
     }
 
+    set setLoss(value) {
+        this.loses = value;
+    }
+
     get getLoss() {
         return this.loses;
+    }
+
+    set setLossStreaks(value) {
+        this.lossStreaks = value;
+    }
+
+    get getLossStreaks() {
+        return this.lossStreaks;
+    }
+
+    set setLossStreakCounter(value) {
+        this.lossStreakCounter = vale;
+    }
+
+    get getLossStreakCounter() {
+        return this.lossStreakCounter;
     }
 
     set setDraws(value) {
