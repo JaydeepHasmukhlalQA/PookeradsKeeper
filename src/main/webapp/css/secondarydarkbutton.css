@@ -1,0 +1,10 @@
+button.btn.dark-secondary-button {
+    border: 1px solid #5d99c6;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+button.btn.dark-secondary-button:hover {
+    background-color: #5d99c6;
+    color: #000000;
+}

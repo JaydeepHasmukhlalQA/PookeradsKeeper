@@ -9,7 +9,6 @@ let lossStreakLabel;
 let drawsLabel;
 let fullBalledEnemyLabel;
 let gotFullBalledLabel;
-let alertMessage;
 
 let deleteMeButton;
 
@@ -48,8 +47,6 @@ function getAllInput() {
     drawsLabel = document.getElementById("drawsLabel");
     fullBalledEnemyLabel = document.getElementById("fullBalledEnemyLabel");
     gotFullBalledLabel = document.getElementById("gotFullBalledLabel");
-
-    alertMessage = document.getElementById("alertMessage");
 
     deleteMeButton = document.getElementById("deleteMeButton");
     deleteMeButton.style.display = "none";
@@ -143,21 +140,6 @@ function deleteMeButtonPressed() {
     }).catch((value) => {
         showAlert(value, alertType.FAIL);
     });
-}
-
-function showAlert(message, alertType) {
-    alertMessage.innerHTML = message;
-
-    alertMessage.classList.remove("alert-success");
-    alertMessage.classList.remove("alert-danger");
-
-    alertMessage.classList.toggle("fade");
-    alertMessage.classList.add("show", alertType);
-}
-
-function hideAlert() {
-    alertMessage.classList.remove("show");
-    alertMessage.classList.add("fade");
 }
 
 function returnToLoginPage() {

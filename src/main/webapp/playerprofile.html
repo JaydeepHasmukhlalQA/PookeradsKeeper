@@ -6,204 +6,64 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/secondarybutton.css">
+    <link rel="stylesheet" href="css/secondarydarkbutton.css">
+    <link rel="stylesheet" href="css/inputtext.css">
     <link rel="stylesheet" href="css/playerprofile.css">
 </head>
 
 <body onload="getJsonPlayerFromSession();">
 
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="#" width="30" height="30" class="d-inline-block align-top" alt="">
+                Pookerards Keeper
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="index.html">Login</a>
+                    <a class="nav-item nav-link" href="searchjokes.html">Register</a>
+                    <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Find Friends</a>
+                    <a class="nav-item nav-link" href="#">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
-        <div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Pookerards</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="register.html">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Players</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+        <div class="row justify-content-md-center align-items-center">
+            <div col>
+                <img src="img/default_profile.jpg" alt="">
+            </div>
         </div>
+
     </div>
 
-    <div id="playerProfileContainer" class="container">
-        <div class="row justify-content-md-center align-items-center">
-            <div class="col-md-auto align-self-center">
-                <span><img src="img/default_profile.jpg" class="rounded-circle border border-danger"></span>
-            </div>
-        </div>
-        <div class="row justify-content-md-center align-items-center">
-            <h1 id="playerFullnameTag" class="display-3"></h1>
-        </div>
-
-        <div class="row justify-content-md-center align-items-center">
-            <div class="col-md-auto">
-                <label class="display-4 profile-label">Username:</label>
-            </div>
-            <div class="col-md-auto">
-                <label id="usernameLabel" class="display-4 profile-data"></label>
-            </div>
-        </div>
-
-        <div class="row justify-content-md-center align-items-center">
-            <div class="col-md-auto">
-                <label class="display-4 profile-label">Firstname:</label>
-            </div>
-            <div class="col-md-auto">
-                <input id="firstnameInput" type="text" class="form-control" readonly>
-            </div>
-        </div>
-
-        <div class="row justify-content-md-center align-items-center">
-            <div class="col-md-auto">
-                <label class="display-4 profile-label">Lastname:</label>
-            </div>
-            <div class="col-md-auto">
-                <input id="lastnameInput" type="text" class="form-control" readonly>
-            </div>
-        </div>
-
-        <div class="row justify-content-md-center align-items-center">
-            <div class="col-md-auto">
-                <label class="display-4 profile-label">Wins:</label>
-            </div>
-            <div class="col-md-auto">
-                <label id="winsLabel" class="display-4 profile-data"></label>
-            </div>
-        </div>
-
-        <div class="row justify-content-md-center align-items-center">
-            <div class="col-md-auto">
-                <label class="display-4 profile-label">Win Streak:</label>
-            </div>
-            <div class="col-md-auto">
-                <label id="winStreaksLabel" class="display-4 profile-data"></label>
-            </div>
-        </div>
-
-        <div class="row justify-content-md-center align-items-center">
-            <div class="col-md-auto">
-                <label class="display-4 profile-label">Draws:</label>
-            </div>
-            <div class="col-md-auto">
-                <label id="drawsLabel" class="display-4 profile-data"></label>
-            </div>
-        </div>
-
-        <div class="row justify-content-md-center align-items-center">
-            <div class="col-md-auto">
-                <label class="display-4 profile-label">Losses:</label>
-            </div>
-            <div class="col-md-auto">
-                <label id="lossesLabel" class="display-4 profile-data"></label>
-            </div>
-        </div>
-
-        <div class="row justify-content-md-center align-items-center">
-            <div class="col-md-auto">
-                <label class="display-4 profile-label">Loss Streak:</label>
-            </div>
-            <div class="col-md-auto">
-                <label id="lossStreakLabel" class="display-4 profile-data"></label>
-            </div>
-        </div>
-
-        <div class="row justify-content-md-center align-items-center">
-            <div class="col-md-auto">
-                <label class="display-4 profile-label">Full Balled Enemy:</label>
-            </div>
-            <div class="col-md-auto">
-                <label id="fullBalledEnemyLabel" class="display-4 profile-data"></label>
-            </div>
-        </div>
-
-        <div class="row justify-content-md-center align-items-center">
-            <div class="col-md-auto">
-                <label class="display-4 profile-label">Got Full Balled:</label>
-            </div>
-            <div class="col-md-auto">
-                <label id="gotFullBalledLabel" class="display-4 profile-data"></label>
-            </div>
-        </div>
-
-        <div class="row justify-content-md-center align-items-center">
-            <div class="col-md-auto">
-                <div id="alertMessage" class="alert alert-success fade" role="alert">
-                </div>
-            </div>
-        </div>
-
-        <div class="row justify-content-md-center align-items-center">
-            <div class="col-md-auto">
-                <button id="addWinButton" type="button" class="btn btn-success" onclick="addWin();">Add Win</button>
-            </div>
-            <div class="col-md-auto">
-                <button id="addLossButton" type="button" class="btn btn-danger" onclick="addLoss();">Add Loss</button>
-            </div>
-        </div>
-
-        <div class="row justify-content-md-center align-items-center">
-            <div class="col-md-auto">
-                <button id="updateDetailsButton" type="button" class="btn btn-primary"
-                    onclick="updateDetailsButtonPressed();">Edit Details</button>
-            </div>
-            <div class="col-md-auto">
-                <button id="deleteMeButton" type="button" class="btn btn-danger" data-toggle="modal"
-                    data-target="#confirmDelete">Delete
-                    Details</button>
-            </div>
-        </div>
-    </div>
-
-
-    <div class=" modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Delete account</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you 100% sure you want to delete your account?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, I made a
-                        mistake!</button>
-                    <button type="button" class="btn btn-danger" onclick="deleteMeButtonPressed();">Please
-                        delete my account.</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+        </script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous">
+        </script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous">
+        </script>
 
     <script type="text/javascript" src="js/hostlocation.js"></script>
     <script type="text/javascript" src="js/alertType.js"></script>
+    <script type="text/javascript" src="js/alertmessagebox.js"></script>
     <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/playerprofile.js"></script>
 </body>

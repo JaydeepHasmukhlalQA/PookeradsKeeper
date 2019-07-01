@@ -1,0 +1,11 @@
+button.btn.secondary-button {
+    background-color: #90caf9;
+    color: #000000;
+    border: 1px solid #90caf9;
+    border-radius: 5px;
+}
+
+button.btn:hover {
+    color: #ffffff;
+    background-color: #5d99c6
+}

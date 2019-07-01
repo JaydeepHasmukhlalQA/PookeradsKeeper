@@ -1,0 +1,14 @@
+.carousel-inner>.carousel-item>img {
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+.carousel-item {
+    height: 65vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }

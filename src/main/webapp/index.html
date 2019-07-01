@@ -10,72 +10,93 @@
     <link rel="stylesheet"
         href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
         integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/secondarybutton.css">
+    <link rel="stylesheet" href="css/secondarydarkbutton.css">
+    <link rel="stylesheet" href="css/inputtext.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
-<body>
+<body onload="findAndHideAlertBox();">
 
-    <div class="container">
-        <div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Pookerards</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link disabled" href="index.html">Login<span
-                                    class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="register.html">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Players</a>
-                        </li>
-                    </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="#" width="30" height="30" class="d-inline-block align-top" alt="">
+                Pookerards Keeper
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="index.html">Login<span
+                            class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="searchjokes.html">Register</a>
+                    <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Find Friends</a>
+                    <a class="nav-item nav-link" href="#">FAQ</a>
                 </div>
-            </nav>
-        </div>
-    </div>
-
-    <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-interval="5000">
-                <img src="img/pool_image_one.jpg" class="d-block w-40" alt="...">
-            </div>
-            <div class="carousel-item" data-interval="5000">
-                <img src="img/pool_image_two.jpg" class="d-block w-40" alt="...">
-            </div>
-            <div class="carousel-item" data-interval="5000">
-                <img src="img/pool_image_three.jpg" class="d-block w-40" alt="...">
             </div>
         </div>
-    </div>
+    </nav>
 
+    <div id="main_body" class="container">
 
-    <div class="container">
+        <header>
+            <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active"
+                        style="background-image: url('https://source.unsplash.com/NhUCRA7mUzE/1920x1080')">
+                        <div class="carousel-caption d-none d-md-block">
+                        </div>
+                    </div>
+                    <div class="carousel-item"
+                        style="background-image: url('https://source.unsplash.com/QnDhG4nNCVQ/1920x1080')">
+                        <div class="carousel-caption d-none d-md-block">
+                        </div>
+                    </div>
+                    <div class="carousel-item"
+                        style="background-image: url('https://source.unsplash.com/iHJlamSNP3U/1920x1080')">
+                        <div class="carousel-caption d-none d-md-block">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
         <div class="row justify-content-md-center align-items-center">
-            <div class="col-md-auto text-center">
+            <div class="col-md-5 text-center">
                 <h1 class="display-4">Pookerards Login</h1>
                 <form onsubmit="return false" id="loginForm" class="form-inlin justify-content-center">
                     <div class="form-group">
                         <label for="username" class="sr-only">Username</label>
                         <input type="text" class="form-control" name="username" placeholder="Your username here">
                     </div>
-                    <button onclick="logMeInButtonClicked();" class="btn btn-success ">Log me In</button>
-                    <button onclick="registerMeButtonClick();" class="btn btn-success ">Register Me</button>
+                    <button onclick="logMeInButtonClicked();" class="btn btn-block secondary-button" type="submit">Log
+                        Me
+                        In</button>
+                    <button onclick="registerMeButtonClick();" class="btn btn-block secondary-button"
+                        type="submit">Register
+                        Me</button>
                 </form>
             </div>
         </div>
-        <div class="row justify-content-md-center">
+
+        <div class="row justify-content-md-center align-items-center">
             <div class="col-md-auto">
                 <div id="alertMessage" class="alert alert-success fade" role="alert">
                 </div>
             </div>
         </div>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -90,8 +111,15 @@
 
     <script type="text/javascript" src="js/hostlocation.js"></script>
     <script type="text/javascript" src="js/alertType.js"></script>
+    <script type="text/javascript" src="js/alertmessagebox.js"></script>
     <script type="text/javascript" src="js/player.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('body').bootstrapMaterialDesign();
+        });
+    </script>
 </body>
 
 </html>

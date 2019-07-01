@@ -1,5 +1,3 @@
-let alertMessage;
-
 function registerMeButtonClick() {
     let usernameValue = document.getElementById("loginForm").elements["username"].value;
 
@@ -14,7 +12,6 @@ function registerMeButtonClick() {
 
 function logMeInButtonClicked() {
     let usernameInput = document.getElementById("loginForm").elements["username"];
-    alertMessage = document.getElementById("alertMessage");
 
     checkFormValidation(usernameInput);
 
@@ -36,21 +33,6 @@ function checkFormValidation(usernameInput) {
     } else {
         usernameInput.classList.add("is-valid");
     }
-}
-
-function showAlert(message, alertType) {
-    alertMessage.innerHTML = message;
-
-    alertMessage.classList.remove("alert-success");
-    alertMessage.classList.remove("alert-danger");
-
-    alertMessage.classList.toggle("fade");
-    alertMessage.classList.add("show", alertType);
-}
-
-function hideAlert() {
-    alertMessage.classList.remove("show");
-    alertMessage.classList.add("fade");
 }
 
 function getPlayerFromAPI(apiUrl, username) {
